@@ -18,13 +18,9 @@ router.post('/', async (req, res) => {
     });
 
     //to save to database
-    const savedPost = await post.save(function(err){
-        if(err){
-             console.log(err);
-             return;
-        }
-        res.json({ token: generateToken(user), user: user });
-  });
+    post.save()
+    .then(data=>res.json(data))
+    .catch(err=>console.error(err));
 
 
 });
